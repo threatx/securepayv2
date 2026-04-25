@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecurePay - Community Scam Reports</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/community.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>Community Scam Reports</h1>
+            <p class="subtitle">Share your experience to help protect others</p>
+            <div class="nav-links">
+                <a href="/">Analyzer</a>
+                <a href="/eval">Eval Dashboard</a>
+                <a href="/review">Review Tool</a>
+                <a href="/awareness">Awareness Chat</a>
+            </div>
+        </header>
+
+        <!-- Stats Bar -->
+        <div class="stats-bar">
+            <div class="stat-item">
+                <span class="stat-value" id="stat-total">0</span>
+                <span class="stat-label">Total Reports</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="stat-pending">0</span>
+                <span class="stat-label">Pending Review</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-value" id="stat-verified">0</span>
+                <span class="stat-label">Verified</span>
+            </div>
+        </div>
+
+        <!-- Tab Navigation -->
+        <div class="tab-nav">
+            <button class="tab-btn active" data-tab="submit">Submit a Scam</button>
+            <button class="tab-btn" data-tab="browse">Browse & Search</button>
+        </div>
+
+        <!-- Tab: Submit -->
+        <div id="tab-submit" class="tab-content active">
+            <div class="form-card">
+                <div class="form-group">
+                    <label for="incident-desc">What happened? *</label>
+                    <textarea id="incident-desc" rows="6"
+                        placeholder="Describe the scam in detail: What happened, how you were contacted, what they asked for, what you did..."></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="scam-type">Scam Type</label>
+                        <select id="scam-type">
+                            <option value="">-- Select --</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="loss-amount">Loss Amount (INR)</label>
+                        <input type="number" id="loss-amount" placeholder="e.g. 5000" min="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="submitter-alias">Your Alias (optional)</label>
+                        <input type="text" id="submitter-alias" placeholder="Anonymous" maxlength="100">
+                    </div>
+                </div>
+
+                <!-- IOC Section -->
+                <div class="ioc-section">
+                    <h3>Suspicious Identifiers (optional)</h3>
+                    <p class="ioc-hint">Report any suspicious UPI IDs, phone numbers, URLs, etc.</p>
+                    <div id="ioc-list"></div>
+                    <button class="btn-outline" id="add-ioc-btn">+ Add Identifier</button>
+                </div>
+
+                <button class="btn btn-primary" id="submit-btn">Submit Report</button>
+
+                <div id="submit-success" class="success-message hidden">
+                    Your report has been submitted successfully. Thank you for helping the community!
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab: Browse & Search -->
+        <div id="tab-browse" class="tab-content">
+            <div class="search-bar">
+                <input type="text" id="search-input"
+                       placeholder="Search: 'QR code payment scam' or 'KYC OTP fraud'...">
+                <button class="btn btn-primary" id="search-btn">Find Similar</button>
+                <button class="btn-outline" id="clear-search-btn">Show All</button>
+            </div>
+
+            <div class="filter-row">
+                <select id="filter-status">
+                    <option value="">All Statuses</option>
+                    <option value="pending">Pending</option>
+                    <option value="verified">Verified</option>
+                    <option value="rejected">Rejected</option>
+                </select>
+                <select id="filter-scam-type">
+                    <option value="">All Types</option>
+                </select>
+            </div>
+
+            <div id="submissions-list"></div>
+        </div>
+    </div>
+
+    <script src="/static/js/community.js"></script>
+
+    <!-- Review Modal -->
+    <div id="review-modal" class="modal-overlay hidden">
+        <div class="modal-box">
+            <div class="modal-header">
+                <h2>Review Submission</h2>
+                <button id="modal-close" class="modal-close-btn">&times;</button>
+            </div>
+            <div class="modal-meta">
+                <span id="modal-status-badge" class="status-badge"></span>
+                <span id="modal-type-badge" class="type-badge"></span>
+                <span id="modal-date" class="submission-date"></span>
+            </div>
+            <div class="modal-body">
+                <p id="modal-description" class="modal-description"></p>
+                <div class="modal-details">
+                    <span id="modal-loss"></span>
+                    <span id="modal-alias"></span>
+                </div>
+                <div id="modal-iocs" class="ioc-tags"></div>
+            </div>
+            <div class="modal-actions">
+                <button id="modal-verify-btn" class="btn btn-verify">&#10003; Verify</button>
+                <button id="modal-reject-btn" class="btn btn-reject">&#10007; Reject</button>
+                <button id="modal-cancel-btn" class="btn btn-secondary">Cancel</button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

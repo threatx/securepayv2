@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecurePay - UPI Fraud Analyzer</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>SecurePay</h1>
+            <p class="subtitle">UPI Fraud Detection & Analysis</p>
+            <div class="nav-links">
+                <a href="/eval">Eval Dashboard</a>
+                <a href="/review">Review Tool</a>
+                <a href="/awareness">Awareness Chat</a>
+                <a href="/community">Community</a>
+            </div>
+        </header>
+
+        <!-- Query Input Section -->
+        <section class="query-section">
+            <label for="query-input">Describe the suspicious situation:</label>
+            <textarea
+                id="query-input"
+                placeholder="Example: I got a call from someone claiming to be SBI manager saying my account KYC expired. They sent a link on WhatsApp and asked me to enter my UPI PIN. Rs 45,000 got debited from my account."
+                rows="4"
+            ></textarea>
+            <button id="analyze-btn" onclick="analyzeQuery()">
+                <span class="btn-text">Analyze</span>
+                <span class="spinner hidden"></span>
+            </button>
+        </section>
+
+        <!-- Detected Patterns Section (hidden initially) -->
+        <section id="patterns-section" class="patterns-section hidden">
+            <h3>Detected Patterns in Your Query</h3>
+            <div id="patterns-container"></div>
+        </section>
+
+        <!-- Results Section (hidden initially) -->
+        <section id="results-section" class="results-section hidden">
+
+            <!-- Two Column Layout -->
+            <div class="results-grid">
+
+                <!-- Left Column: Retrieved Cases -->
+                <div class="cases-column">
+                    <h2>Retrieved Cases</h2>
+                    <div id="cases-container"></div>
+                </div>
+
+                <!-- Right Column: LLM Analysis -->
+                <div class="analysis-column">
+                    <h2>Analysis</h2>
+                    <div id="analysis-container"></div>
+                </div>
+            </div>
+
+            <!-- Similarity Chart -->
+            <div class="chart-section">
+                <h2>Similarity Scores</h2>
+                <div class="chart-container">
+                    <canvas id="similarity-chart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Error Section -->
+        <section id="error-section" class="error-section hidden">
+            <div class="error-message">
+                <span class="error-icon">!</span>
+                <p id="error-text"></p>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>SecurePay RAG System | Powered by Cohere Embeddings + Groq LLM</p>
+        </footer>
+    </div>
+
+    <script src="/static/js/app.js"></script>
+</body>
+</html>

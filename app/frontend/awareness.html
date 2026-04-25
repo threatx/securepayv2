@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SecurePay - UPI Fraud Awareness</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/awareness.css">
+</head>
+<body>
+    <div class="container awareness-container">
+        <header class="header">
+            <h1>UPI Fraud Awareness</h1>
+            <p class="subtitle">Ask questions about UPI scams, prevention, and safety</p>
+            <div class="nav-links">
+                <a href="/">Analyzer</a>
+                <a href="/eval">Eval Dashboard</a>
+                <a href="/review">Review Tool</a>
+                <a href="/community">Community</a>
+            </div>
+        </header>
+
+        <div class="chat-wrapper">
+            <div class="chat-messages" id="chat-messages">
+                <div class="message assistant-message">
+                    <div class="message-label">SecurePay Assistant</div>
+                    <div class="message-content">
+                        Welcome! I can help you learn about UPI fraud in India. Ask me about:
+                        <ul>
+                            <li>Types of UPI scams (QR code fraud, KYC scams, etc.)</li>
+                            <li>How to stay safe while using UPI</li>
+                            <li>What to do if you've been scammed</li>
+                            <li>Red flags to watch out for</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-area">
+                <div class="quick-questions" id="quick-questions">
+                    <button class="quick-btn" data-msg="What are the most common UPI scams in India?">Common scams</button>
+                    <button class="quick-btn" data-msg="How do QR code scams work?">QR code scams</button>
+                    <button class="quick-btn" data-msg="What should I do if I was scammed via UPI?">I was scammed</button>
+                    <button class="quick-btn" data-msg="How can I keep my UPI account safe?">Safety tips</button>
+                    <button class="quick-btn" data-msg="What are the red flags of a UPI fraud?">Red flags</button>
+                </div>
+                <div class="input-row">
+                    <input type="text" id="chat-input" placeholder="Ask about UPI fraud, scams, prevention..." autocomplete="off">
+                    <button id="send-btn" onclick="sendMessage()">Send</button>
+                    <button id="clear-btn" onclick="clearChat()" title="Clear chat">Clear</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="sources-panel hidden" id="sources-panel">
+            <h4>Sources Used</h4>
+            <div id="sources-list"></div>
+        </div>
+    </div>
+
+    <script src="/static/js/awareness.js"></script>
+</body>
+</html>
